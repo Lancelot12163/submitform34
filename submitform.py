@@ -14,7 +14,7 @@ def contact():
 	form = SubmittForm(request.form)
 	if request.method == 'POST':
 		name=request.form['name']
-		return 'welcome %s' %name
+		return redirect(url_for('welcome', name = name))
 	return render_template('Submit.html', form = form)
 	
 
