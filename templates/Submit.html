@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Submit your name</title>
+</head>
+<body>
+
+<p>&nbsp;&nbsp;Please submit your name.</p>
+	<form method='POST' action="/contact">
+		{{ form.csrf_token }}
+		{{ form.name}}
+		{{ form.status}}
+		<input type="submit" value="Submit">
+	</form>
+</body>
+</html>
