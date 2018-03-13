@@ -6,31 +6,6 @@ from wtforms.validators import InputRequired
 app = Flask(__name__)
 app.config.from_object('config.Config');
 
-class DateForm(Form):
-	date = StringField('date', validators=[InputRequired()])
-
-	
-data = {'year' : '2018', 'month' : 'march'}
-
-@app.route('/data', methods = ['GET'])
-def returnAll():
-	return str(data)
-
-@app.route('/data/<string:input>', methods = ['GET'])
-def returnOne(input):
-	if input in data:
-		return data[input]
-	return 'invalid input'
-
-@app.route('/add', methods = ['GET','POST'])
-def add():
-	form = DateForm(request.form)
-	date = str(request.form.get('date'))
-	if date.isdigit() and int(date) > 0 and int(date) < 31:
-		data['date'] = date
-		return str(data)
-	return render_template('date.html', form = form)
-	
 	
 class SubmittForm(Form):
 	name = StringField('name', validators=[InputRequired()])
